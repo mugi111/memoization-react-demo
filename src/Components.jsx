@@ -1,10 +1,12 @@
 import React from "react";
 import moize from "moize";
 
-export const TestAdd = (props) => {
-  moize.react(
+const TestAdd = ({ first, second }) => {
+  return (
     <span>
-      {props.first + props.second}
+      {Number(first) + Number(second)}
     </span>
-  );
+  )
 }
+
+export const MemorizedTestAdd = moize(TestAdd, { isReact: true });
