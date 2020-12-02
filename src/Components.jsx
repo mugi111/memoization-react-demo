@@ -1,12 +1,14 @@
 import React from "react";
 import moize from "moize";
 
-const TestAdd = ({ first, second }) => {
+export const TestRender = ({ text, num }) => {
   return (
     <span>
-      {Number(first) + Number(second)}
+      {[...Array(num)].map(() => {
+        return <span>{text}</span>;
+      })}
     </span>
   )
 }
 
-export const MemorizedTestAdd = moize(TestAdd, { isReact: true });
+export const MemorizedTestRender = moize.react(TestRender);

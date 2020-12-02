@@ -1,32 +1,25 @@
 import React, { useState } from 'react';
-import { MemorizedTestAdd } from './Components';
+import { TestRender, MemorizedTestRender } from './Components';
 import './App.css';
 
 function App() {
-  let tmpFirst = 0;
-  let tmpSecond = 0;
-  const [first, setFirst] = useState(0);
-  const [second, setSecond] = useState(0);
+  let tmpText = "";
+  const [text, setText] = useState("");
 
-  const changeFirst = (e) => {
-    tmpFirst = e.target.value;
-  }
-
-  const changeSecond = (e) => {
-    tmpSecond = e.target.value;
+  const changeText = (e) => {
+    tmpText = e.target.value;
   }
 
   const setNumber = () => {
-    setFirst(tmpFirst);
-    setSecond(tmpSecond);
+    setText(tmpText);
   }
 
   return (
     <div className="App">
-      <input onChange={changeFirst}></input>
-      <input onChange={changeSecond}></input>
+      <input onChange={changeText}></input>
       <button onClick={setNumber}>set</button>
-      <MemorizedTestAdd first={first} second={second}></MemorizedTestAdd>
+      <TestRender text={text} num={4000}></TestRender>
+      <MemorizedTestRender text={text} num={4000}></MemorizedTestRender>
     </div>
   );
 }
