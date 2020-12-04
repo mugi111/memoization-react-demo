@@ -3,12 +3,17 @@ import moize from "moize";
 
 export const TestRender = ({ text, num }) => {
   return (
-    <span>
+    <table>
       {[...Array(num)].map(() => {
-        return <span>{text}</span>;
+        return (
+          <td>
+            {[...Array(num)].map(() => {
+              return <tr>{text}</tr>
+            })}
+          </td>);
       })}
-    </span>
-  )
-}
+    </table>
+  );
+};
 
 export const MemorizedTestRender = moize.react(TestRender);

@@ -18,8 +18,8 @@ function App() {
     <div className="App">
       <input onChange={changeText}></input>
       <button onClick={setNumber}>set</button>
-      <TestRender text={text} num={5}></TestRender>
-      <MemorizedTestRender text={text} num={100}></MemorizedTestRender>
+      <TestRender text={text} num={10}></TestRender>
+      <MemorizedTestRender text={text} num={10}></MemorizedTestRender>
     </div>
   );
 }
