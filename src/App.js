@@ -3,21 +3,25 @@ import { TestRender, MemorizedTestRender } from './Components';
 import './App.css';
 
 function App() {
-  let tmpText = "";
+  const texts = ["a", "b", "c", "d", "e", "f"];
+
   const [text, setText] = useState("");
 
-  const changeText = (e) => {
-    tmpText = e.target.value;
+
+  const sleep = (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  const setNumber = () => {
-    setText(tmpText);
+  const start = async () => {
+    for (let t of texts) {
+      setText(t);
+      await sleep(1000);
+    }
   }
 
   return (
     <div className="App">
-      <input onChange={changeText}></input>
-      <button onClick={setNumber}>set</button>
+      <button onClick={start}>start</button>
       <TestRender text={text} num={10}></TestRender>
       <MemorizedTestRender text={text} num={10}></MemorizedTestRender>
     </div>
